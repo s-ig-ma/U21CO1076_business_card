@@ -44,14 +44,15 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(LightBlue)
                 ) { innerPadding ->
-                    // Main Box with thicker Blue Border
+                    // Apply innerPadding to main Box to remove warning
                     Box(
                         modifier = Modifier
+                            .padding(innerPadding) // Now used!
                             .padding(16.dp)
                             .fillMaxWidth()
                             .fillMaxHeight(0.85f)
                             .border(
-                                width = 12.dp, // larger border
+                                width = 6.dp, // thicker border
                                 color = BorderBlue,
                                 shape = RoundedCornerShape(16.dp)
                             )
@@ -69,7 +70,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BusinessCardApp(modifier: Modifier = Modifier) {
 
-    // Use a smaller space between sections
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceEvenly, // reduces space between top and bottom
@@ -95,12 +95,19 @@ fun ProfileSection() {
                 .clip(RoundedCornerShape(16.dp)) // optional rounded image
         )
 
-        Spacer(modifier = Modifier.height(12.dp)) // smaller space
+        Spacer(modifier = Modifier.height(12.dp))
 
         Text(
             text = "Abdul-Ahad Mahmood",
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold
+        )
+
+        // University name under the full name
+        Text(
+            text = "Ahmadu Bello University Zaria",
+            color = IconBlue,
+            fontSize = 18.sp
         )
 
         Text(
