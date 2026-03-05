@@ -21,19 +21,13 @@ The purpose of this project is to demonstrate how **Jetpack Compose composables*
 
 ---
 
-## 🛠 Technologies Used
+## Technologies Used
 
 * Kotlin
 * Jetpack Compose
 * Android Studio
 * Material Design Icons
 
----
-
-## Application Screenshot
-
-Below is the expected user interface when the app runs:
-![App Screenshot](screenshot.png)
 ---
 
 ## How to Clone and Run the Project
