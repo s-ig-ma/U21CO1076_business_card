@@ -44,22 +44,28 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(LightBlue)
                 ) { innerPadding ->
-                    // Apply innerPadding to main Box to remove warning
                     Box(
                         modifier = Modifier
-                            .padding(innerPadding) // Now used!
-                            .padding(16.dp)
-                            .fillMaxWidth()
-                            .fillMaxHeight(0.85f)
-                            .border(
-                                width = 6.dp, // thicker border
-                                color = BorderBlue,
-                                shape = RoundedCornerShape(16.dp)
-                            )
-                            .background(Color.White)
-                            .padding(24.dp)
+                            .fillMaxSize()
+                            .padding(innerPadding)
+                            .padding(20.dp),
+                        contentAlignment = Alignment.Center
                     ) {
-                        BusinessCardApp()
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .fillMaxHeight()
+                                .border(
+                                    width = 8.dp,
+                                    color = BorderBlue,
+                                    shape = RoundedCornerShape(24.dp)
+                                )
+                                .clip(RoundedCornerShape(24.dp))
+                                .background(Color.White)
+                                .padding(24.dp)
+                        ) {
+                            BusinessCardApp()
+                        }
                     }
                 }
             }
@@ -72,7 +78,7 @@ fun BusinessCardApp(modifier: Modifier = Modifier) {
 
     Column(
         modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceEvenly, // reduces space between top and bottom
+        verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ProfileSection()
@@ -84,36 +90,46 @@ fun BusinessCardApp(modifier: Modifier = Modifier) {
 fun ProfileSection() {
 
     Column(
-        modifier = Modifier.padding(top = 16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
     ) {
         Image(
             painter = painterResource(id = R.drawable.pass),
             contentDescription = "Profile Image",
             modifier = Modifier
                 .size(120.dp)
-                .clip(RoundedCornerShape(16.dp)) // optional rounded image
+                .clip(RoundedCornerShape(16.dp))
         )
 
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Text(
             text = "Abdul-Ahad Mahmood",
-            fontSize = 30.sp,
-            fontWeight = FontWeight.Bold
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.Black,
+            modifier = Modifier.fillMaxWidth()
         )
 
-        // University name under the full name
+        Spacer(modifier = Modifier.height(8.dp))
+
         Text(
             text = "Ahmadu Bello University Zaria",
             color = IconBlue,
-            fontSize = 18.sp
+            fontSize = 16.sp,
+            modifier = Modifier.fillMaxWidth()
         )
+
+        Spacer(modifier = Modifier.height(4.dp))
 
         Text(
             text = "Aspiring Android Developer",
             color = IconBlue,
-            fontSize = 18.sp
+            fontSize = 16.sp,
+            modifier = Modifier.fillMaxWidth()
         )
     }
 }
@@ -122,8 +138,11 @@ fun ProfileSection() {
 fun ContactSection() {
 
     Column(
-        modifier = Modifier.padding(bottom = 16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 16.dp),
+        horizontalAlignment = Alignment.Start,
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         ContactItem(Icons.Default.Phone, "+234 906 661 6336")
         ContactItem(Icons.Default.Share, "@abdul_ahad")
@@ -136,23 +155,25 @@ fun ContactItem(icon: androidx.compose.ui.graphics.vector.ImageVector, text: Str
 
     Row(
         modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth(0.7f),
-        verticalAlignment = Alignment.CenterVertically
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Start
     ) {
-
         Icon(
             imageVector = icon,
             contentDescription = null,
-            tint = IconBlue
+            tint = IconBlue,
+            modifier = Modifier.size(20.dp)
         )
 
-        Spacer(modifier = Modifier.width(12.dp))
+        Spacer(modifier = Modifier.width(16.dp))
 
         Text(
             text = text,
             color = IconBlue,
-            fontSize = 16.sp
+            fontSize = 14.sp,
+            maxLines = 1
         )
     }
 }
